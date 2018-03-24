@@ -1,4 +1,5 @@
 sceneSetups:
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 - path: Assets/testGameManager.unity
 =======
@@ -24,5 +25,8 @@ sceneSetups:
 - path: Assets/Tim.unity
 >>>>>>> Stashed changes
 >>>>>>> 661b76f64bdee0896703d4bd815f93b4b443dc0c
+=======
+- path: Assets/Tim.unity
+>>>>>>> Stashed changes
   isLoaded: 1
   isActive: 1

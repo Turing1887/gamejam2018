@@ -1,5 +1,6 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: initializeCompiler
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
 <<<<<<< Updated upstream
@@ -44,3 +45,5 @@ Cmd: compileSnippet
 =======
 >>>>>>> Stashed changes
 >>>>>>> 661b76f64bdee0896703d4bd815f93b4b443dc0c
+=======
+>>>>>>> Stashed changes

@@ -3,6 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< Updated upstream
   tags: []
 <<<<<<< HEAD
 =======
@@ -22,6 +23,10 @@ TagManager:
   - Tube_1
 >>>>>>> Stashed changes
 >>>>>>> 661b76f64bdee0896703d4bd815f93b4b443dc0c
+=======
+  tags:
+  - Bubble
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
