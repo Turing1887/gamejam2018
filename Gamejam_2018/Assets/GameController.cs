@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
     public Camera cam;
-    public GameObject roomPrefab;
+    public GameObject randomPrefab;
     public GameObject startPrefab;
+    public GameObject questionPrefab;
+    public GameObject eventPrefab;
     public GameObject bubble;
+    public Text countdown;
 
     public float offset = 16f;
     public string[] roomTypes;
     public float bubbleSpeed = 3f;
+    public float duration = 8f;
+    public float timer = 10f;
 
     private bool[] playerReadyForChange;
     private Vector3 spawnPos = new Vector3(0f, 0f, 0f);
@@ -27,6 +33,9 @@ public class GameController : MonoBehaviour {
 
     // Use this for initialization
     void Update () {
+        timer -= Time.deltaTime;
+        countdown.text = (Mathf.Round(timer)).ToString();
+
         /*
 		for (int i = 0; i < readyForChange.Length; i++)
         {
@@ -46,41 +55,48 @@ public class GameController : MonoBehaviour {
         */
 	}
 
+    private void LateUpdate()
+    {
+        
+    }
+
     void getRoomType()
     {
         int randomNum = Random.Range(0, roomTypes.Length);
-        buildRoomInterior(0);
+        buildRoomInterior(randomNum);
     }
 
     void buildRoomInterior(int roomNum)
     {
         GameObject newRoom = GameObject.Find("newRoom");
-        switch(roomNum)
+        if (newRoom != null)
+        {
+            GameObject oldRoom = GameObject.Find("newRoom");
+            oldRoom.name = "oldRoom";
+        }
+        switch (roomNum)
         {
             //Random
             case 0:
-                newRoom.transform.GetChild(3).gameObject.SetActive(false);
+                Vector3 prefabPos0 = randomPrefab.transform.position;
+                float newHeight0 = prefabPos0.y + offset * counter;
+                GameObject ranRoom = Instantiate(randomPrefab, new Vector3(prefabPos0.x, newHeight0, prefabPos0.z), Quaternion.identity);
+                ranRoom.name = "newRoom";
                 randomizeDif();
                 break;
             // Event
             case 1:
-                newRoom.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
-                newRoom.transform.GetChild(0).GetChild(5).gameObject.SetActive(false);
-                newRoom.transform.GetChild(0).GetChild(6).gameObject.SetActive(false);
-                newRoom.transform.GetChild(0).GetChild(7).gameObject.SetActive(false);
-                newRoom.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
-                newRoom.transform.GetChild(1).GetChild(2).gameObject.SetActive(false);
-                newRoom.transform.GetChild(1).GetChild(4).gameObject.SetActive(false);
+                Vector3 prefabPos1 = eventPrefab.transform.position;
+                float newHeight1 = prefabPos1.y + offset * counter;
+                GameObject eventRoom = Instantiate(eventPrefab, new Vector3(prefabPos1.x, newHeight1, prefabPos1.z), Quaternion.identity);
+                eventRoom.name = "newRoom";
                 break;
             // Question
             case 2:
-                newRoom.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
-                newRoom.transform.GetChild(0).GetChild(5).gameObject.SetActive(false);
-                newRoom.transform.GetChild(0).GetChild(6).gameObject.SetActive(false);
-                newRoom.transform.GetChild(0).GetChild(7).gameObject.SetActive(false);
-                newRoom.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
-                newRoom.transform.GetChild(1).GetChild(2).gameObject.SetActive(false);
-                newRoom.transform.GetChild(1).GetChild(4).gameObject.SetActive(false);
+                Vector3 prefabPos2 = eventPrefab.transform.position;
+                float newHeight2 = prefabPos2.y + offset * counter;
+                GameObject questionRoom = Instantiate(questionPrefab, new Vector3(prefabPos2.x, newHeight2, prefabPos2.z), Quaternion.identity);
+                questionRoom.name = "newRoom";
                 break;
         }
     }
@@ -92,43 +108,43 @@ public class GameController : MonoBehaviour {
         int dif3 = Random.Range(0, 10);
         int dif4 = Random.Range(0, 10);
 
-        InvokeRepeating("spawnBubble1", 1f, dif1 * Random.Range(0.25f, 0.75f));
-        InvokeRepeating("spawnBubble2", 1f, dif2 * Random.Range(0.25f, 0.75f));
-        InvokeRepeating("spawnBubble3", 1f, dif3 * Random.Range(0.25f, 0.75f));
-        InvokeRepeating("spawnBubble4", 1f, dif4 * Random.Range(0.25f, 0.75f));
+        InvokeRepeating("spawnBubble1", 1f, Random.Range(5f, 6.5f) / dif1);
+        InvokeRepeating("spawnBubble2", 1f, Random.Range(5f, 6.5f) / dif2);
+        InvokeRepeating("spawnBubble3", 1f, Random.Range(5f, 6.5f) / dif3);
+        InvokeRepeating("spawnBubble4", 1f, Random.Range(5f, 6.5f) / dif4);
     }
 
     void spawnBubble1()
     {
         GameObject newRoom = GameObject.Find("newRoom");
-        float y = newRoom.transform.GetChild(0).GetChild(3).transform.position.y;
-        GameObject bub = Instantiate(bubble, new Vector3(Random.Range(-9f, -6.5f), y, 0f), Quaternion.identity);
+        float y = newRoom.transform.GetChild(1).GetChild(1).transform.position.y;
+        GameObject bub = Instantiate(bubble, new Vector3(Random.Range(-8.75f, -5.75f), y + 2f, 0f), Quaternion.identity);
         bub.GetComponent<Rigidbody2D>().velocity = bub.transform.up * bubbleSpeed;
-        Destroy(bub, 4f);
+        Destroy(bub, 3f);
     }
     void spawnBubble2()
     {
         GameObject newRoom = GameObject.Find("newRoom");
-        float y = newRoom.transform.GetChild(0).GetChild(3).transform.position.y;
-        GameObject bub = Instantiate(bubble, new Vector3(Random.Range(-4f, 0f), y, 0f), Quaternion.identity);
+        float y = newRoom.transform.GetChild(1).GetChild(1).transform.position.y;
+        GameObject bub = Instantiate(bubble, new Vector3(Random.Range(-4.25f, -0.75f), y + 2f, 0f), Quaternion.identity);
         bub.GetComponent<Rigidbody2D>().velocity = bub.transform.up * bubbleSpeed;
-        Destroy(bub, 4f);
+        Destroy(bub, 3f);
     }
     void spawnBubble3()
     {
         GameObject newRoom = GameObject.Find("newRoom");
-        float y = newRoom.transform.GetChild(0).GetChild(3).transform.position.y;
-        GameObject bub = Instantiate(bubble, new Vector3(Random.Range(0f, 4f), y, 0f), Quaternion.identity);
+        float y = newRoom.transform.GetChild(1).GetChild(1).transform.position.y;
+        GameObject bub = Instantiate(bubble, new Vector3(Random.Range(0.75f, 4.25f), y + 2f, 0f), Quaternion.identity);
         bub.GetComponent<Rigidbody2D>().velocity = bub.transform.up * bubbleSpeed;
-        Destroy(bub, 4f);
+        Destroy(bub, 3f);
     }
     void spawnBubble4()
     {
         GameObject newRoom = GameObject.Find("newRoom");
-        float y = newRoom.transform.GetChild(0).GetChild(3).transform.position.y;
-        GameObject bub = Instantiate(bubble, new Vector3(Random.Range(6.5f, 9f), y, 0f), Quaternion.identity);
+        float y = newRoom.transform.GetChild(1).GetChild(1).transform.position.y;
+        GameObject bub = Instantiate(bubble, new Vector3(Random.Range(5.75f, 8.75f), y + 2f, 0f), Quaternion.identity);
         bub.GetComponent<Rigidbody2D>().velocity = bub.transform.up * bubbleSpeed;
-        Destroy(bub, 4f);
+        Destroy(bub, 3f);
     }
 
     void changeSzene()
@@ -146,15 +162,6 @@ public class GameController : MonoBehaviour {
         }
         else
         {
-            Vector3 prefabPos = roomPrefab.transform.position;
-            float newHeight = prefabPos.y + offset * counter;
-            GameObject newRoom = Instantiate(roomPrefab, new Vector3(prefabPos.x, newHeight, prefabPos.z), Quaternion.identity);
-            if (GameObject.Find("newRoom") != null)
-            {
-                GameObject oldRoom = GameObject.Find("newRoom");
-                oldRoom.name = "oldRoom";
-            }
-            newRoom.name = "newRoom";
             getRoomType();
         }
         
