@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 4029362580476854}
   - component: {fileID: 212909965160083880}
   - component: {fileID: 61200599386327912}
+  - component: {fileID: 114229732941333838}
   m_Layer: 0
   m_Name: Tube_1
   m_TagString: Untagged
@@ -341,8 +342,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1993024154259022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+=======
+  m_LocalPosition: {x: 0.6483853, y: -0.73, z: 0.077186674}
+  m_LocalScale: {x: 0.85, y: 0.79, z: 1}
+>>>>>>> Stashed changes
   m_Children:
   - {fileID: 4400584901556726}
   - {fileID: 4097791451588328}
@@ -582,6 +588,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114229732941333838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723118460829632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4be686c630415240a4d2b48d1ba1ef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 0
+  lockedPlayer: 
 --- !u!212 &212042994774541842
 SpriteRenderer:
   m_ObjectHideFlags: 1

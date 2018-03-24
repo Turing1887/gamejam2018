@@ -6,6 +6,7 @@ public class Tubes : MonoBehaviour {
 
 	string tube;
 	public bool isLocked = false;
+	public string lockedPlayer;
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +14,9 @@ public class Tubes : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
-		if(coll.gameObject.tag == "Player" && !isLocked){
+		if(!isLocked){
 			coll.gameObject.SetActive (false);
+			lockedPlayer = coll.gameObject.tag;
 			isLocked = true;
 		}
 	}
