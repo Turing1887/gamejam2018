@@ -10,9 +10,11 @@ public class CameraMovement : MonoBehaviour {
     private Vector3 oldPos;
     private Vector3 velocity = Vector3.zero;
     private bool move = false;
+	public GameController controller;
 
     // Use this for initialization
     void Start () {
+		controller = GameObject.Find ("GameManager").GetComponent<GameController> ();
         oldPos = gameObject.transform.position;
     }
 
@@ -26,6 +28,7 @@ public class CameraMovement : MonoBehaviour {
             gameObject.transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
             if (Vector3.Distance(transform.position, targetPos) < 0.01f)
             {
+				controller.Spawn ();
                 move = false;
                 oldPos = gameObject.transform.position;
             }

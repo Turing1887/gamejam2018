@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
     public GameObject questionPrefab;
     public GameObject eventPrefab;
     public GameObject bubble;
+	public GameObject[] playerPrefabs;
     public Text countdown;
 
     public float offset = 16f;
@@ -22,7 +23,7 @@ public class GameController : MonoBehaviour {
     private Vector3 spawnPos = new Vector3(0f, 0f, 0f);
     private int counter = 1;
 
-
+	public string[] tubes;
 
     // Raumwechsel
     // Raumbuilding
@@ -171,7 +172,9 @@ public class GameController : MonoBehaviour {
     {
 
     }
-
+	void SpawnPlayer(){
+		
+	}
     void buildNewRoom(bool startRoom = false)
     {
         counter--;
