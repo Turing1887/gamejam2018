@@ -21,7 +21,7 @@ TagManager:
   - 
   - 
   - Particle
-  - 
+  - Skin
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: skin
+    uniqueID: 3051589161
     locked: 0
