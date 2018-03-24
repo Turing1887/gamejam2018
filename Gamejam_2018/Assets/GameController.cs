@@ -23,18 +23,33 @@ public class GameController : MonoBehaviour {
     private Vector3 spawnPos = new Vector3(0f, 0f, 0f);
     private int counter = 1;
 
+
+
     // Raumwechsel
     // Raumbuilding
 
     private void Start()
     {
         buildNewRoom(true);
+
     }
 
     // Use this for initialization
     void Update () {
         timer -= Time.deltaTime;
-        countdown.text = (Mathf.Round(timer)).ToString();
+        if (timer <= 0f)
+        {
+            // Camera Lerp
+            CameraMovement camMov = cam.GetComponent<CameraMovement>();
+            camMov.enableCam();
+            buildNewRoom();
+            timer = 10f;
+        }
+        else
+        {
+            countdown.text = (Mathf.Round(timer)).ToString();
+        }
+        
 
         /*
 		for (int i = 0; i < readyForChange.Length; i++)
@@ -55,10 +70,7 @@ public class GameController : MonoBehaviour {
         */
 	}
 
-    private void LateUpdate()
-    {
-        
-    }
+
 
     void getRoomType()
     {

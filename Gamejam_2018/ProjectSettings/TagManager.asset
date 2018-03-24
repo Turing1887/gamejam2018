@@ -3,13 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-  - Bubble
-=======
-  - Player_1
-  - Player_2
->>>>>>> 3fdfa8c564306f1164194f4cf6a6e5b820f107f3
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -44,9 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: UI
-    uniqueID: 897401369
-    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

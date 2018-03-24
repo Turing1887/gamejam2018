@@ -12,11 +12,6 @@ public class PlayerMovement : MonoBehaviour {
         rig = GetComponent<Rigidbody2D>();
 	}
 	
-<<<<<<< HEAD
-	// Update is called once per frame
-	void FixedUpdate () {
-
-=======
 	void Update () {
         if(gameObject.tag == "Player_1")
         {
@@ -43,7 +38,6 @@ public class PlayerMovement : MonoBehaviour {
             float vAxis = Input.GetAxis("Vertical_P2");
 
             Vector2 movement = new Vector2(hAxis, vAxis);
->>>>>>> 3fdfa8c564306f1164194f4cf6a6e5b820f107f3
 
             rig.AddForce(movement * speed);
 
