@@ -29,6 +29,10 @@ public class CameraMovement : MonoBehaviour {
             if (Vector3.Distance(transform.position, targetPos) < 0.01f)
             {
 //				controller.Spawn ();
+     
+                controller.timer = 10f;
+                controller.buildNewRoom();
+
                 move = false;
                 oldPos = gameObject.transform.position;
             }

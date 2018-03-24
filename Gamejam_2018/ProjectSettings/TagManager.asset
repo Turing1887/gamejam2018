@@ -4,13 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bubble
   - Player_2
   - Player_1
+  - Bubble
   - Tube_3
   - Tube_1
   - Tube_2
   - Tube_4
+  - Player_3
+  - Player_4
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,13 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - Particle
   - Skin
+=======
+  - 
+  - 
+>>>>>>> e88067a8e842bfc330b2c4b7170ab5e0be021397
   - 
   - 
   - 

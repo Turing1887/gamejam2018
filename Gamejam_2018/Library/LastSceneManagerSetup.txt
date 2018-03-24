@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/flo_scene.unity
+- path: Assets/testGameManager.unity
   isLoaded: 1
   isActive: 1

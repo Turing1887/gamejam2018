@@ -13,13 +13,16 @@ public class GameController : MonoBehaviour {
     public GameObject bubble;
 	public GameObject[] playerPrefabs;
     public Text countdown;
+    public Text p1;
+    public Text p2;
+    public Text p3;
+    public Text p4;
 
     public float offset = 16f;
     public string[] roomTypes;
     public float duration = 8f;
     public float timer = 10f;
 
-    private bool[] playerReadyForChange;
     private Vector3 spawnPos = new Vector3(0f, 0f, 0f);
     private int counter = 1;
 
@@ -31,7 +34,26 @@ public class GameController : MonoBehaviour {
     private void Start()
     {
         buildNewRoom(true);
-
+        GameObject player1 = GameObject.FindGameObjectWithTag("Player_1");
+        GameObject player2 = GameObject.FindGameObjectWithTag("Player_2");
+        GameObject player3 = GameObject.FindGameObjectWithTag("Player_3");
+        GameObject player4 = GameObject.FindGameObjectWithTag("Player_4");
+        if (player1 == null)
+        {
+            p1.text = "";
+        }
+        if (player2 == null)
+        {
+            p2.text = "";
+        }
+        if (player3 == null)
+        {
+            p3.text = "";
+        }
+        if (player4 == null)
+        {
+            p4.text = "";
+        }
     }
 
     // Use this for initialization
@@ -43,35 +65,58 @@ public class GameController : MonoBehaviour {
             // Camera Lerp
             CameraMovement camMov = cam.GetComponent<CameraMovement>();
             camMov.enableCam();
-            buildNewRoom();
-            timer = 10f;
+            killPlayer();
         }
         else
         {
             countdown.text = (Mathf.Round(timer)).ToString();
         }
         
-
-        /*
-		for (int i = 0; i < readyForChange.Length; i++)
-        {
-            if (readyForChange[i] == true)
-            {
-                if (i == playerReadyForChange.Length)
-                {
-                    changeSzene();
-                    buildNewRoom();
-                }
-            }
-            else
-            {
-                break;
-            }
-        }
-        */
 	}
 
-
+    void killPlayer()
+    {
+        GameObject player1 = GameObject.FindGameObjectWithTag("Player_1");
+        GameObject player2 = GameObject.FindGameObjectWithTag("Player_2");
+        GameObject player3 = GameObject.FindGameObjectWithTag("Player_3");
+        GameObject player4 = GameObject.FindGameObjectWithTag("Player_4");
+        if (player1 != null)
+        {
+            player1.SetActive(false);
+            string oldText = p1.text;
+            int oldLife;
+            int.TryParse(oldText, out oldLife);
+            oldLife--;
+            p1.text = oldLife.ToString();
+        }
+        if (player2 != null)
+        {
+            player2.SetActive(false);
+            string oldText = p2.text;
+            int oldLife;
+            int.TryParse(oldText, out oldLife);
+            oldLife--;
+            p2.text = oldLife.ToString();
+        }
+        if (player3 != null)
+        {
+            player3.SetActive(false);
+            string oldText = p3.text;
+            int oldLife;
+            int.TryParse(oldText, out oldLife);
+            oldLife--;
+            p3.text = oldLife.ToString();
+        }
+        if (player4 != null)
+        {
+            player4.SetActive(false);
+            string oldText = p4.text;
+            int oldLife;
+            int.TryParse(oldText, out oldLife);
+            oldLife--;
+            p4.text = oldLife.ToString();
+        }
+    }
 
     void getRoomType()
     {
@@ -175,7 +220,7 @@ public class GameController : MonoBehaviour {
 	void SpawnPlayer(){
 		
 	}
-    void buildNewRoom(bool startRoom = false)
+    public void buildNewRoom(bool startRoom = false)
     {
         counter--;
         if (startRoom)
