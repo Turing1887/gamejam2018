@@ -11,7 +11,10 @@ public class PlayerMovement : MonoBehaviour {
     void Start () {
         rig = GetComponent<Rigidbody2D>();
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 40a5e446cb8ba7bfbab7081f003c800a7928dca3
 	void Update () {
         if(gameObject.tag == "Player_1")
         {
