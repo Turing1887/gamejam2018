@@ -3,16 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Player_2
-  - Player_1
-  - Bubble
-  - Tube_3
-  - Tube_1
-  - Tube_2
-  - Tube_4
-  - Player_3
-  - Player_4
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -22,13 +13,8 @@ TagManager:
   - UI
   - 
   - 
-<<<<<<< HEAD
-  - Particle
-  - Skin
-=======
   - 
   - 
->>>>>>> e88067a8e842bfc330b2c4b7170ab5e0be021397
   - 
   - 
   - 
@@ -54,7 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: skin
-    uniqueID: 3051589161
     locked: 0
