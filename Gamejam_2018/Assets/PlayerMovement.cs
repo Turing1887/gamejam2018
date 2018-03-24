@@ -5,29 +5,52 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public int speed = 5;
-    float gravity = -9.8f;
+    public float turnSpeed = 60;
+    private Rigidbody2D rig;
 
-
-	// Use this for initialization
-	void Start () {
-		
+    void Start () {
+        rig = GetComponent<Rigidbody2D>();
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate () {
-        float h = Input.GetAxis("Horizontal");
-        Vector3 pos = transform.position;
-        //transform.position = new Vector3(pos.x, pos.y + gravity * Time.deltaTime, 0);
-
-        if (Input.GetKey(KeyCode.A))
+	void Update () {
+        if(gameObject.tag == "Player_1")
         {
-            transform.position = new Vector3 (pos.x - h * speed * Time.deltaTime, pos.y, 0);
-        }
-        else if (Input.GetKey(KeyCode.D))
+            float hAxis = Input.GetAxis("Horizontal_P1");
+            float vAxis = Input.GetAxis("Vertical_P1");
+
+            Vector2 movement = new Vector2(hAxis, vAxis);
+
+            rig.AddForce(movement * speed);
+
+            if (Input.GetButton("Player1_R1"))
+            {
+                transform.Rotate(-Vector3.forward * turnSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetButton("Player1_L1"))
+            {
+
+                transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime);
+            }
+        }else if (gameObject.tag == "Player_2")
         {
-            transform.position = new Vector3(pos.x + h * speed * Time.deltaTime, pos.y, 0);
+            float hAxis = Input.GetAxis("Horizontal_P2");
+            float vAxis = Input.GetAxis("Vertical_P2");
+
+            Vector2 movement = new Vector2(hAxis, vAxis);
+
+            rig.AddForce(movement * speed);
+
+            if (Input.GetButton("Player1_R1"))
+            {
+                transform.Rotate(-Vector3.forward * turnSpeed * Time.deltaTime);
+            }
+
+            if (Input.GetButton("Player1_L1"))
+            {
+
+                transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime);
+            }
         }
-
-
     }
 }
