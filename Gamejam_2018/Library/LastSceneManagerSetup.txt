@@ -1,4 +1,20 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/testGameManager.unity
+=======
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< HEAD
+- path: Assets/flo_scene.unity
+=======
+- path: Assets/testGameManager.unity
+>>>>>>> eda2038e1f16ecf5c1fe9f3acca3c11b34633aed
+=======
+- path: Assets/test.unity
+>>>>>>> Stashed changes
+=======
+- path: Assets/test.unity
+>>>>>>> Stashed changes
+>>>>>>> f073cc95288e6ed1689c54bbac124c4638f6a90e
   isLoaded: 1
   isActive: 1
