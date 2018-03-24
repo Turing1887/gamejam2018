@@ -15,16 +15,17 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        float h = Input.GetAxis("Horizontal");
         Vector3 pos = transform.position;
         //transform.position = new Vector3(pos.x, pos.y + gravity * Time.deltaTime, 0);
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.position = new Vector3 (pos.x - speed * Time.deltaTime, pos.y, 0);
+            transform.position = new Vector3 (pos.x - h * speed * Time.deltaTime, pos.y, 0);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            transform.position = new Vector3(pos.x + speed * Time.deltaTime, pos.y, 0);
+            transform.position = new Vector3(pos.x + h * speed * Time.deltaTime, pos.y, 0);
         }
 
 
