@@ -11,11 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     void Start () {
         rig = GetComponent<Rigidbody2D>();
 	}
-<<<<<<< Updated upstream
-	
-=======
 
->>>>>>> Stashed changes
 	void Update () {
         if(gameObject.tag == "Player_1")
         {
