@@ -15,7 +15,6 @@ public class GameController : MonoBehaviour {
 
     public float offset = 16f;
     public string[] roomTypes;
-    public float bubbleSpeed = 3f;
     public float duration = 8f;
     public float timer = 10f;
 
@@ -39,6 +38,7 @@ public class GameController : MonoBehaviour {
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
+            CancelInvoke();
             // Camera Lerp
             CameraMovement camMov = cam.GetComponent<CameraMovement>();
             camMov.enableCam();
@@ -83,6 +83,12 @@ public class GameController : MonoBehaviour {
         GameObject newRoom = GameObject.Find("newRoom");
         if (newRoom != null)
         {
+            GameObject olderRoom = GameObject.Find("oldRoom");
+            if (olderRoom != null)
+            {
+                olderRoom.name = "olderRoom";
+                Destroy(olderRoom, 3f);
+            }
             GameObject oldRoom = GameObject.Find("newRoom");
             oldRoom.name = "oldRoom";
         }
@@ -120,6 +126,12 @@ public class GameController : MonoBehaviour {
         int dif3 = Random.Range(0, 10);
         int dif4 = Random.Range(0, 10);
 
+        StartCoroutine(waitForSpawn(dif1, dif2, dif3, dif4));
+    }
+
+    IEnumerator waitForSpawn(int dif1, int dif2, int dif3, int dif4)
+    {
+        yield return new WaitForSeconds(10f);
         InvokeRepeating("spawnBubble1", 1f, Random.Range(5f, 6.5f) / dif1);
         InvokeRepeating("spawnBubble2", 1f, Random.Range(5f, 6.5f) / dif2);
         InvokeRepeating("spawnBubble3", 1f, Random.Range(5f, 6.5f) / dif3);
@@ -128,34 +140,30 @@ public class GameController : MonoBehaviour {
 
     void spawnBubble1()
     {
-        GameObject newRoom = GameObject.Find("newRoom");
-        float y = newRoom.transform.GetChild(1).GetChild(1).transform.position.y;
+        GameObject oldRoom = GameObject.Find("oldRoom");
+        float y = oldRoom.transform.GetChild(1).GetChild(1).transform.position.y;
         GameObject bub = Instantiate(bubble, new Vector3(Random.Range(-8.75f, -5.75f), y + 2f, 0f), Quaternion.identity);
-        bub.GetComponent<Rigidbody2D>().velocity = bub.transform.up * bubbleSpeed;
         Destroy(bub, 3f);
     }
     void spawnBubble2()
     {
-        GameObject newRoom = GameObject.Find("newRoom");
-        float y = newRoom.transform.GetChild(1).GetChild(1).transform.position.y;
+        GameObject oldRoom = GameObject.Find("oldRoom");
+        float y = oldRoom.transform.GetChild(1).GetChild(1).transform.position.y;
         GameObject bub = Instantiate(bubble, new Vector3(Random.Range(-4.25f, -0.75f), y + 2f, 0f), Quaternion.identity);
-        bub.GetComponent<Rigidbody2D>().velocity = bub.transform.up * bubbleSpeed;
         Destroy(bub, 3f);
     }
     void spawnBubble3()
     {
-        GameObject newRoom = GameObject.Find("newRoom");
-        float y = newRoom.transform.GetChild(1).GetChild(1).transform.position.y;
+        GameObject oldRoom = GameObject.Find("oldRoom");
+        float y = oldRoom.transform.GetChild(1).GetChild(1).transform.position.y;
         GameObject bub = Instantiate(bubble, new Vector3(Random.Range(0.75f, 4.25f), y + 2f, 0f), Quaternion.identity);
-        bub.GetComponent<Rigidbody2D>().velocity = bub.transform.up * bubbleSpeed;
         Destroy(bub, 3f);
     }
     void spawnBubble4()
     {
-        GameObject newRoom = GameObject.Find("newRoom");
-        float y = newRoom.transform.GetChild(1).GetChild(1).transform.position.y;
+        GameObject oldRoom = GameObject.Find("oldRoom");
+        float y = oldRoom.transform.GetChild(1).GetChild(1).transform.position.y;
         GameObject bub = Instantiate(bubble, new Vector3(Random.Range(5.75f, 8.75f), y + 2f, 0f), Quaternion.identity);
-        bub.GetComponent<Rigidbody2D>().velocity = bub.transform.up * bubbleSpeed;
         Destroy(bub, 3f);
     }
 

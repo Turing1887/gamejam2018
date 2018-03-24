@@ -3,30 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
   tags: []
-=======
-  tags:
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-  - Bubble
-=======
-  - Player_1
-  - Player_2
->>>>>>> 3fdfa8c564306f1164194f4cf6a6e5b820f107f3
-=======
-=======
->>>>>>> Stashed changes
-  - Tube_1
-  - Tube_2
-  - Tube_3
-  - Tube_4
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
->>>>>>> f073cc95288e6ed1689c54bbac124c4638f6a90e
   layers:
   - Default
   - TransparentFX
