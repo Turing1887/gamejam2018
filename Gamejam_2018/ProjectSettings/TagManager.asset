@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Bubble
+=======
+  - Player_1
+  - Player_2
+>>>>>>> 3fdfa8c564306f1164194f4cf6a6e5b820f107f3
   layers:
   - Default
   - TransparentFX
