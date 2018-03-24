@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bubble
+  - Player_2
+  - Player_1
+  - Tube_3
+  - Tube_1
+  - Tube_2
+  - Tube_4
   layers:
   - Default
   - TransparentFX
@@ -14,7 +20,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Particle
   - 
   - 
   - 

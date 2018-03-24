@@ -28,7 +28,7 @@ public class CameraMovement : MonoBehaviour {
             gameObject.transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smoothTime);
             if (Vector3.Distance(transform.position, targetPos) < 0.01f)
             {
-				controller.Spawn ();
+//				controller.Spawn ();
                 move = false;
                 oldPos = gameObject.transform.position;
             }
