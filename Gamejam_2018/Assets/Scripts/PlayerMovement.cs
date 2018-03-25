@@ -41,16 +41,54 @@ public class PlayerMovement : MonoBehaviour {
 
             rig.AddForce(movement * speed);
 
-            if (Input.GetButton("Player1_R1"))
+            if (Input.GetButton("Player2_R1"))
             {
                 transform.Rotate(-Vector3.forward * turnSpeed * Time.deltaTime);
             }
 
-            if (Input.GetButton("Player1_L1"))
+            if (Input.GetButton("Player2_L1"))
             {
 
                 transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime);
             }
-        }
+		}else if (gameObject.tag == "Player_3")
+		{
+			float hAxis = Input.GetAxis("Horizontal_P3");
+			float vAxis = Input.GetAxis("Vertical_P3");
+
+			Vector2 movement = new Vector2(hAxis, vAxis);
+
+			rig.AddForce(movement * speed);
+
+			if (Input.GetButton("Player3_R1"))
+			{
+				transform.Rotate(-Vector3.forward * turnSpeed * Time.deltaTime);
+			}
+
+			if (Input.GetButton("Player3_L1"))
+			{
+
+				transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime);
+			}
+		}else if (gameObject.tag == "Player_4")
+		{
+			float hAxis = Input.GetAxis("Horizontal_P4");
+			float vAxis = Input.GetAxis("Vertical_P4");
+
+			Vector2 movement = new Vector2(hAxis, vAxis);
+
+			rig.AddForce(movement * speed);
+
+			if (Input.GetButton("Player4_R1"))
+			{
+				transform.Rotate(-Vector3.forward * turnSpeed * Time.deltaTime);
+			}
+
+			if (Input.GetButton("Player4_L1"))
+			{
+
+				transform.Rotate(Vector3.forward * turnSpeed * Time.deltaTime);
+			}
+		}
     }
 }
