@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     public Camera cam;
+    public Questions questions;
+    public Canvas canvas;
     public GameObject randomPrefab;
     public GameObject startPrefab;
     public GameObject questionPrefab;
@@ -17,11 +19,12 @@ public class GameController : MonoBehaviour {
     public Text p2;
     public Text p3;
     public Text p4;
+    public Text questionText;
 
     public float offset = 16f;
-    public string[] roomTypes;
     public float duration = 8f;
     public float timer = 10f;
+    public int roomTypes;
 
     private Vector3 spawnPos = new Vector3(0f, 0f, 0f);
     private int counter = 1;
@@ -120,8 +123,8 @@ public class GameController : MonoBehaviour {
 
     void getRoomType()
     {
-        int randomNum = Random.Range(0, roomTypes.Length);
-        buildRoomInterior(randomNum);
+        int randomNum = Random.Range(0, roomTypes);
+        buildRoomInterior(2);
     }
 
     void buildRoomInterior(int roomNum)
@@ -142,6 +145,7 @@ public class GameController : MonoBehaviour {
         {
             //Random
             case 0:
+                StartCoroutine(toggleUI(false));
                 Vector3 prefabPos0 = randomPrefab.transform.position;
                 float newHeight0 = prefabPos0.y + offset * counter;
                 GameObject ranRoom = Instantiate(randomPrefab, new Vector3(prefabPos0.x, newHeight0, prefabPos0.z), Quaternion.identity);
@@ -150,6 +154,7 @@ public class GameController : MonoBehaviour {
                 break;
             // Event
             case 1:
+                StartCoroutine(toggleUI(true));
                 Vector3 prefabPos1 = eventPrefab.transform.position;
                 float newHeight1 = prefabPos1.y + offset * counter;
                 GameObject eventRoom = Instantiate(eventPrefab, new Vector3(prefabPos1.x, newHeight1, prefabPos1.z), Quaternion.identity);
@@ -157,10 +162,13 @@ public class GameController : MonoBehaviour {
                 break;
             // Question
             case 2:
+                int numQuestion = questions.getQuestion();
+                string question = questions.questions[numQuestion];
+                StartCoroutine(toggleUI(true, question));
                 Vector3 prefabPos2 = eventPrefab.transform.position;
                 float newHeight2 = prefabPos2.y + offset * counter;
                 GameObject questionRoom = Instantiate(questionPrefab, new Vector3(prefabPos2.x, newHeight2, prefabPos2.z), Quaternion.identity);
-                questionRoom.name = "newRoom";
+                questionRoom.name = "newRoom";                
                 break;
         }
     }
@@ -173,6 +181,15 @@ public class GameController : MonoBehaviour {
         int dif4 = Random.Range(0, 10);
 
         StartCoroutine(waitForSpawn(dif1, dif2, dif3, dif4));
+    }
+
+    IEnumerator toggleUI(bool state, string question = "")
+    {
+        yield return new WaitForSeconds(13f);
+        questionText.text = question;
+        canvas.transform.GetChild(5).gameObject.SetActive(state);
+        canvas.transform.GetChild(6).gameObject.SetActive(state);
+        canvas.transform.GetChild(7).gameObject.SetActive(state);
     }
 
     IEnumerator waitForSpawn(int dif1, int dif2, int dif3, int dif4)

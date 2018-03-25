@@ -522,6 +522,9 @@ RectTransform:
   - {fileID: 1339072206}
   - {fileID: 854027428}
   - {fileID: 1537433610}
+  - {fileID: 1528850101}
+  - {fileID: 962574019}
+  - {fileID: 1432616804}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -604,6 +607,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 854027427}
+--- !u!1 &962574018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 962574019}
+  - component: {fileID: 962574021}
+  - component: {fileID: 962574020}
+  m_Layer: 5
+  m_Name: Yes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &962574019
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 962574018}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 426992578}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 150, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &962574020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 962574018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7d5ff613174656445b8dbc675925d844, type: 3}
+    m_FontSize: 15
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: NO
+--- !u!222 &962574021
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 962574018}
 --- !u!1 &1254904381
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,6 +690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254904383}
   - component: {fileID: 1254904382}
+  - component: {fileID: 1254904384}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -632,6 +710,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 88874134}
+  questions: {fileID: 1254904384}
+  canvas: {fileID: 426992577}
   randomPrefab: {fileID: 1872336395828746, guid: cbd61ade7397f7141a0bfb625dd7be98,
     type: 2}
   startPrefab: {fileID: 1993024154259022, guid: 0b9a464cb2500c94287b6a485b54e051,
@@ -647,10 +727,11 @@ MonoBehaviour:
   p2: {fileID: 1339072207}
   p3: {fileID: 854027429}
   p4: {fileID: 1537433611}
+  questionText: {fileID: 1528850102}
   offset: 16
-  roomTypes: []
   duration: 8
   timer: 10
+  roomTypes: 2
   tubes: []
 --- !u!4 &1254904383
 Transform:
@@ -665,6 +746,78 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254904384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254904381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 201b7da247d21ff40b0ad6625404a3c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questions:
+  - "\u201CQuizduell\u201D was made by swedish devs."
+  - "Kafka has written \u2018Before the Law\u2019"
+  - Binding of Isaac was released before Super Meat Boy.
+  - Chlorophyll is vital for photosynthesis.
+  - Bruce Willis was born in america.
+  - Broccoli is often boiled or steamed but may be eaten raw.
+  - Baht is the currency of Thailand.
+  - Leipzig has a higher population than Stuttgart.
+  - As far as has ever been reported, no-one has ever seen an ostrich bury its head
+    in the sand.
+  - Approximately one quarter of human bones are in the feet.
+  - "Popeye\u2019s nephews were called Peepeye, Poopeye, Pipeye and Pupeye."
+  - In ancient Rome, a special room called a vomitorium was available for diners to
+    purge food in during meals.
+  - The average person will shed 10 pounds of skin during their lifetime.
+  - Sneezes regularly exceed 100 m.p.h.
+  - "A slug\u2019s blood is green."
+  - The Great Wall Of China is visible from the moon.
+  - Virtually all Las Vegas gambling casinos ensure that they have no clocks.
+  - The total surface area of two human lungs have a surface area of approximately
+    70 square metres.
+  - The longest distance swam underwater in one breath is 200metres.
+  - The fastest time to eat 15 Ferrero Rocher is 1 minute 10 seconds.
+  - The record for most needles inserted into the head is 15,000.
+  - "The world\u2019s longest legs belong to a Russian lady and measure 132cm"
+  - The heaviest aircraft pulled by a single man weighed 188.83 tonnes and was pulled
+    8.8 metres.
+  - "The record for the fastest time to solve a Rubik\u2019s Cube one-handed is 37
+    seconds. "
+  - "The world\u2019s tallest living man is 251cm / 8 ft 3 in."
+  - 'The record for the longest rail tunnel is held by the Channel Tunnel between
+    Britain and France. '
+  - There are some wasps that make honey.
+  - "Marie Curie\u2019s husband was called Pierre."
+  - Seoul is the capital of North Korea.
+  - According to Scottish law, it is illegal to be drunk in charge of a cow.
+  - Danny Jones is a member of the band McFly.
+  - Marie Antoinette was married to Louis XVI of France.
+  - Alliumphobia is a fear of garlic.
+  - "\u2018Fauntleroy\u2019 is the middle name of Donald Duck."
+  - Henry VIII had an extra finger on each hand.
+  - "The singer \u2018Cher\u2019 was born Cherilyn Sarkisian."
+  - Alfred Hitchcock had no belly button as it was removed during surgery.
+  - "The \u2018black box\u2019 in an aeroplane is black."
+  - "Michael Jackson had a pet python called \u2018Crusher\u2019."
+  - The distance, as the crow flies, from London to Edinburgh, is greater than the
+    distance from London to Glasgow.
+  - "Sir Paul McCartney\u2019s middle name is James"
+  - Jupiter is the fifth planet from the sun.
+  - Lithium has the atomic number 17.
+  - The Guinness World Record for most fingers and toes at birth is held by an Indian
+    man born with 14 fingers and 20 toes in total.
+  - Hotmail was launched in 1996.
+  - From the ground to the torch, the Statue of Liberty is 93 metres high.
+  - Bananas grow on trees.
+  - Shaving makes hair grow back faster.
+  - Sugar makes children hyper.
+  - Cracking your knuckles too much will give you arthritis.
+  rightAnswers: 0101000100010100010101000001010001010100000101000100010100010101010100010100010000010001010100000000
+  alreadyPicked: 
 --- !u!1 &1339072205
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,6 +892,154 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1339072205}
+--- !u!1 &1432616803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1432616804}
+  - component: {fileID: 1432616806}
+  - component: {fileID: 1432616805}
+  m_Layer: 5
+  m_Name: No
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1432616804
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432616803}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 426992578}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -150, y: 100}
+  m_SizeDelta: {x: 80, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1432616805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432616803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7d5ff613174656445b8dbc675925d844, type: 3}
+    m_FontSize: 15
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: YES
+--- !u!222 &1432616806
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1432616803}
+--- !u!1 &1528850100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1528850101}
+  - component: {fileID: 1528850103}
+  - component: {fileID: 1528850102}
+  m_Layer: 5
+  m_Name: Question
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1528850101
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528850100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 426992578}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 100}
+  m_SizeDelta: {x: 500, y: 150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1528850102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528850100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7d5ff613174656445b8dbc675925d844, type: 3}
+    m_FontSize: 12
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Question
+--- !u!222 &1528850103
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1528850100}
 --- !u!1 &1537433609
 GameObject:
   m_ObjectHideFlags: 0
